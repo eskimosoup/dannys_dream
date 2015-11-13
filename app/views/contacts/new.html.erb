@@ -1,0 +1,51 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag("shared") %>
+  <script type="text/javascript">
+    // When a user visits this page, they will *always* want to complete this form - give them a helping hand.
+    $(document).ready(function() {
+      $("#contact_name").focus();
+    });
+  </script>
+<% end %>
+
+<div class="col_8">
+  
+  <h1><%= title "Contact" %></h1>
+  
+  <%= form_for @contact do |f| %>
+    <% unless f.object.errors.empty? %>
+      <div class="notice error">
+        <% f.object.errors.full_messages.each do |e| %>
+          <%= e %><br />
+        <% end -%>
+      </div>
+    <% end -%>
+    <%= f.label :name, {:class => "col_6"} %><br />
+    <%= f.text_field :name, {:class => "col_6"} %>
+    <br /><br />
+    <%= f.label :email, {:class => "col_6"} %><br />
+    <%= f.text_field :email, {:class => "col_6"} %>
+    <br /><br />
+    <%= f.label :telephone, {:class => "col_6"} %><br />
+    <%= f.text_field :telephone, {:class => "col_6"} %>
+    <br /><br />
+    <%= f.label :message, {:class => "col_6"} %><br />
+    <%= f.text_area :message, {:cols => "48", :style => "margin-left: 5px;"}%>
+    <br /><br />
+    <div class="clear"></div>
+    <br />
+    <%= f.submit "Send Message", {:style => "margin-left:5px;"} %>
+    <br />
+  <% end -%>
+  
+  <br />
+  
+</div>
+
+<div class="col_4">
+  
+  <%= render("articles/basic_page") %>
+  <div class="clear"></div>
+  <%= render("calendar_entries/basic_page") %>
+  
+</div>

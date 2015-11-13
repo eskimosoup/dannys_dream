@@ -1,0 +1,10 @@
+<% title Website.model_name.titleize.pluralize %>
+
+<div class="admin_functions">
+  <%= link_to "New #{Website.model_name.titleize}", new_admin_website_path %>
+</div>
+
+<%= informant_table @websites, {
+    :headings => [ '', 'Name', 'URL', 'Displayed?', '', '' ], 
+    :body     => [ it_sort, :name, lambda{|w| link_to(w.url, w.url, {:target => "_blank"})}, it_ajax_toggle(:display), it_edit, it_destroy ]
+  } %>

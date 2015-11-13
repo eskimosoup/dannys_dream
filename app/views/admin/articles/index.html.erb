@@ -1,0 +1,10 @@
+<% title Article.model_name.titleize.pluralize %>
+
+<div class="admin_functions">
+  <%= link_to "New #{Article.model_name.titleize}", new_admin_article_path %>
+</div>
+
+<%= informant_table @articles, {
+    :headings => [ 'Name', 'Summary', 'Date', 'Displayed?', '', '', '' ], 
+    :body     => [ :name, lambda{|a| a.summary.length > 79 ? strip_tags(a.summary)[0..79] + "..." : strip_tags(a.summary)}, lambda{|a| l(a.date, :format => :short)}, it_ajax_toggle(:display), it_edit_images, it_edit, it_destroy ]
+  } %>

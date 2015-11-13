@@ -1,0 +1,13 @@
+<div class="col_12">
+  
+  <h1><%= title(CalendarEntry.model_name.titleize.pluralize) %></h1>
+
+  <% @calendar_entries.each_with_index do |c, i| %>
+    <div style="margin: 10px auto 10px auto;">
+      <h2><%= c.name %></h2>
+      <%= l(c.date, :format => :long) %>
+      <%= raw(c.content) %>
+    </div>
+  <% end %>
+  
+</div>

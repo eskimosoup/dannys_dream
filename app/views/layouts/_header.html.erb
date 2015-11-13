@@ -1,0 +1,55 @@
+<div class="col_12">
+
+  <div class="col_4 left" id="logo">
+    <%= content_tag :a, :href => root_url do %>
+      <%= image_tag "logo.png", :alt => SITE_SETTINGS['Name'] %>
+    <% end -%>
+  </div>
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $("#small_navigation a:first").addClass("first");
+      $("#small_navigation a:last").addClass("last");
+    });
+  </script>
+
+  <div class="col_8 right" id="small_navigation">
+    <% Willow::Branch.where(tree: 'Small Navigation').roots.order(:position).each do |b| %>
+        <%= link_to b.name, b.destination, :class => "useful_links" %>
+    <% end -%>
+  </div>
+
+  <div class="col_8 right" id="header_contact">
+    <div id="header_telephone"><%= SITE_SETTINGS['Telephone'] %></div>
+    <div id="header_email"><%= mail_to SITE_SETTINGS['Email'] %></div>
+  </div>
+
+  <ul class="col_6_and_a_bit menu" id="main_navigation">
+    <%  Willow::Branch.where(tree: 'Main Navigation').roots.order(:position).each do |b| -%>
+      <% klasses = [] -%>
+      <% klasses << "current" if @current_branch && (@current_branch == b || @current_branch.ancestors.include?(b)) -%>
+      <%= content_tag :li, :class => klasses.join(' ') do -%>
+        <%= link_to b.name, b.destination, :access_key => b.access_key -%>
+        <% children = b.children.order(:position) -%>
+        <% unless children.empty? -%>
+          <ul>
+            <% children.each do |c| -%>
+              <% klasses = [] -%>
+              <% klasses << "current" if @current_branch && @current_branch == c -%>
+              <%= content_tag :li, :class => klasses.join(' ') do -%>
+                <%= link_to c.name, c.destination -%>
+              <% end -%>
+            <% end -%>
+          </ul>
+        <% end -%>
+      <% end -%>
+    <% end -%>
+  </ul>
+
+  <div class="col_1" id="donate_now">
+    <%= link_to "", "/pages/giving-money", :class => "donate_now_button" %>
+  </div>
+
+</div>
+
+<div class="clear"></div>

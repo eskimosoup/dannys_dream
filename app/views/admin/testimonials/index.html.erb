@@ -1,0 +1,10 @@
+<% title Testimonial.model_name.titleize.pluralize %>
+
+<div class="admin_functions">
+  <%= link_to "New #{Testimonial.model_name.titleize}", new_admin_testimonial_path %>
+</div>
+
+<%= informant_table @testimonials, {
+    :headings => [ '', 'Author', 'Content', 'Displayed?', '', '' ], 
+    :body     => [ it_sort, :author, lambda{|t| t.content.length > 79 ? strip_tags(t.content)[0..79] + "..." : strip_tags(t.content)}, it_ajax_toggle(:display), it_edit, it_destroy ]
+  } %>

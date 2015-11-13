@@ -1,0 +1,26 @@
+<% content_for :head, stylesheet_link_tag("gallery") %>
+
+<div class="col_9">
+  <h1><%= title "Gallery" %></h1>
+  <div class="gallery">
+    <% @gallery_images.each do |gi| %>
+      <%= content_tag :a, :href => gi.image.url do %>
+        <%= image_tag gi.image.index.url, :alt => gi.alt, :title => gi.alt %>
+      <% end -%>
+    <% end -%>
+  </div>
+</div>
+<div class="col_3" id="gallery_categories">
+  <ul class="menu vertical right">
+    <%= content_tag :li, :class => ("current" if params[:category].nil?) do %>
+      <%= link_to "All Categories", gallery_images_path(:category => nil) %>
+    <% end -%>
+    <% GalleryImage.categories.each do |c| %>
+      <%= content_tag :li, :class => ("current" if c == params[:category]) do %>
+        <%= link_to c, gallery_images_path(:category => c) %>
+      <% end -%>
+    <% end -%>
+  </ul>
+</div>
+
+<div class="clear"></div>

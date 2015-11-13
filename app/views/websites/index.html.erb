@@ -1,0 +1,11 @@
+<% content_for :head, stylesheet_link_tag("gallery") %>
+
+<div class="col_12">
+  <h1><%= title "Useful Websites" %></h1>
+  <% @websites.each do |w| %>
+    <p>
+      <strong><%= w.name %></strong><br />
+      <% if w.url? %><%= link_to w.url, w.url, :target => "_blank" %><br /><% end -%>
+    </p>
+  <% end -%>
+</div>

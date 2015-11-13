@@ -1,0 +1,10 @@
+<% title CalendarEntry.model_name.titleize.pluralize %>
+
+<div class="admin_functions">
+  <%= link_to "New #{CalendarEntry.model_name.titleize}", new_admin_calendar_entry_path %>
+</div>
+
+<%= informant_table @calendar_entries, {
+    :headings => [ 'Name', 'Date', 'Content', 'Displayed?', '', '' ], 
+    :body     => [ :name, lambda{|entry| l(entry.date, :format => :short)}, lambda{|entry| entry.content.length > 79 ? strip_tags(entry.content)[0..79] + "..." : strip_tags(entry.content)}, it_ajax_toggle(:display), it_edit, it_destroy ]
+  } %>

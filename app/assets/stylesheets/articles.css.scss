@@ -1,0 +1,42 @@
+/* Index */
+
+#articles {
+  margin-bottom: 30px;
+  .article {
+    .article_image {
+      background: image-url("thumbborder.png") no-repeat;
+      float: left;
+      margin: 10px 15px 20px 0px;
+    }
+    .article_details {
+      width: 779px;
+      float: left;
+      font-size: 11px;
+      line-height: 110%;
+      margin-top: 10px;
+      .article_date {
+        font-weight: bold;
+      }
+      h2 {
+        margin-top: 0px;
+      }
+      a {
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+/* Show */
+
+.article {
+  .article_image {
+    float: left;
+    margin: 0px 15px 15px 0px;
+  }
+}

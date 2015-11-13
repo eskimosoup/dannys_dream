@@ -1,0 +1,10 @@
+<% title GalleryImage.model_name.titleize.pluralize %>
+
+<div class="admin_functions">
+  <%= link_to "New #{GalleryImage.model_name.titleize}", new_admin_gallery_image_path %>
+</div>
+
+<%= informant_table @gallery_images, {
+    :headings => [ '', 'Image', 'Alt', 'Category', 'Display', '', '', '' ], 
+    :body     => [ it_sort, it_thumb(:image), :alt, :category, it_ajax_toggle(:display), it_edit_images, it_edit, it_destroy ]
+  } %>

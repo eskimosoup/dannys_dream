@@ -1,0 +1,18 @@
+<% content_for :head, stylesheet_link_tag("articles") %>
+<div class="col_12">
+  <h1><%= title("News") %></h1>
+  <div id="articles">
+    <% @articles.each do |a| %>
+      <div class="article">
+        <%= link_to(image_tag(a.image.index, :alt => a.image_alt, :title => a.image_alt, :class => "article_image"), article_path(a)) if a.image? %>
+        <div class="article_details">
+          <h2><%= a.name %></h2>
+          <span class="article_date"><%= l(a.date, :format => :long) %></span>
+          <p><%= a.summary %></p>
+          <p><%= link_to "Read more", article_path(a) %></p>
+        </div>
+      </div>
+      <div class="clear"></div>
+    <% end %>
+  </div>
+</div>

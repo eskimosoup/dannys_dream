@@ -1,0 +1,8 @@
+<div class="col_12">
+  <h1><%= title "Testimonials" %></h1>
+  <% @testimonials.each do |t| %>
+    <%= raw(t.content) %>
+    <em>- <%= t.author %></em>
+    <hr />
+  <% end -%>
+</div>

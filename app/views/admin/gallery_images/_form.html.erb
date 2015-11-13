@@ -1,0 +1,45 @@
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    $("input#gallery_image_category").autocomplete({
+      source: [<%= GalleryImage.categories.map{|x| "'#{x}\'"}.join(",") %>],
+      delay: 0,
+      minLength: 0
+    });
+    $('input#gallery_image_category').focus(function(){
+      $(this).autocomplete('search');
+    });
+  });
+</script>
+
+<%= form_for([:admin, @gallery_image]) do |f| %>
+
+  <%= f.error_messages %>
+
+  <%= field_set_tag("Basic Information") do -%>
+    <div class="field">
+      <%= f.image_field :image %>
+    </div>
+    <div class="field">
+      <%= f.label :alt, "Image alt" %><br />
+      <%= f.text_field :alt %>
+    </div>
+  <% end -%>
+
+  <%= field_set_tag("Category") do -%>
+    <div class="field">
+      <%= f.text_field :category %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.check_box :display %>
+    <%= f.label :display %>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

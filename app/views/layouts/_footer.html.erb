@@ -1,0 +1,12 @@
+<div id="sub-footer-links">
+  &copy; <%= h SITE_SETTINGS["Name"] %> | <%= link_to "Web design by eskimosoup", "http://www.eskimosoup.co.uk", {:target => "_blank"} %> |
+  <% Willow::Branch.where(tree: 'Footer Navigation').each_with_index do |branch, i| %>
+    <%= link_to branch.name, branch.destination, {:accesskey => branch.access_key} %>
+    <%= " | " if !(branch == Willow::Branch.where(tree: 'Footer Navigation').last) %>
+  <% end %>
+
+
+  <% unless SITE_SETTINGS["Facebook"].blank? %>
+    <%= link_to image_tag("facebook.png",alt: 'Facebook', title: 'Facebook'), SITE_SETTINGS["Facebook"], target: "_blank", class: "social-media" %>
+  <% end %>
+</div>

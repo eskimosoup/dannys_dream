@@ -1,0 +1,18 @@
+<h2>News <%= link_to "View All", articles_path, :class => "view_all" %></h2>
+<% @articles ||= Article.front_end %>
+<% if !@articles.empty? %>
+  <div id="articles">
+    <% @articles.each_with_index do |a, i| %>
+      <div class="article">
+        <%= link_to(image_tag(a.image.home, :alt => a.image_alt, :title => a.image_alt, :class => "article_image"), article_path(a)) if a.image? %>
+        <div class="article_details">
+          <span class="article_date"><%= l(a.date, :format => :long) %></span>
+          <p><%= a.summary %></p>
+          <p><%= link_to "Read more", article_path(a) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No news to display - check back soon!</p>
+<% end %>

@@ -1,0 +1,70 @@
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    $("input#link_category").autocomplete({
+      source: [<%= Link.categories.map{|x| "'#{x}\'"}.join(",") %>],
+      delay: 0,
+      minLength: 0
+    });
+    $('input#link_category').focus(function(){
+      $(this).autocomplete('search');
+    });
+  });
+</script>
+
+<%= form_for([:admin, @link]) do |f| %>
+
+  <%= f.error_messages %>
+
+  <%= field_set_tag("Basic Information") do %>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :url, "URL" %><br />
+      <%= f.text_field :url %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :telephone %><br />
+      <%= f.text_field :telephone %>
+    </div>
+    <div class="field">
+      <%= f.label :emergency_telephone %><br />
+      <%= f.text_field :emergency_telephone %>
+    </div>
+    <div class="field">
+      <%= f.label :fax %><br />
+      <%= f.text_field :fax %>
+    </div>
+    <div class="field">
+      <%= f.label :notes %><br />
+      <%= f.text_area :notes %>
+    </div>
+  <% end %>
+
+  <%= field_set_tag("Category") do %>
+    <div class="field">
+      <%= f.text_field :category %>
+    </div>
+  <% end %>
+
+  <%= field_set_tag("Image") do %>
+    <%= f.image_field :image %>
+  <% end %>
+
+  <div class="field">
+    <%= f.check_box :display %>
+    <%= f.label :display %>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

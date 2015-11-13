@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <%= render 'layouts/head' %>
+  <body>
+    <a id="top-of-page"></a>
+    <div class="white_wrap">
+      <div class="middle" id="header">
+        <%= render 'layouts/header' %>
+      </div>
+    </div>
+    <div class="yellow_wrap">
+      <div class="middle sunburst">
+        <% unless hide_flash? -%>
+          <%- flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          <%- end -%>
+        <% end -%>
+        <%= yield %>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="brown_wrap">
+      <div class="middle">
+        <div class="col_12">
+          <h2>Contacts</h2>
+          <p>
+            <span>
+              The Agency operates an out-of-office on-call service that may be contacted at any time for emergency situations on (01482) 313883.
+            </span>
+          </p>
+          <% poc = PointOfContact.display %>
+          <% poc[0..3].each do |c| %>
+            <div class="col_3">
+              <% if c.name? %><span style="font-weight: bold;"><%= c.name %></span><br /><% end -%>
+              <% if c.role? %><%= c.role %><br /><% end -%>
+              <% if c.address? %>Address: <%= c.address %><br /><% end -%>
+              <% if c.telephone? %>Office Telephone: <%= c.telephone %><br /><% end -%>
+              <% if c.email? %>E-mail: <%= mail_to c.email %><br /><% end -%>
+            </div>
+          <% end -%>
+          <%# if poc.length > 4 %>
+            <%#= link_to "View All", points_of_contact_index_path %>
+          <%# end -%>
+        </div>
+        <!--
+        <div class="col_4">
+          <h2>Links</h2>
+          <% links = Link.display %>
+          <% links[0..4].each do |l| %>
+            <p>
+              <strong><%= l.name %></strong><br />
+              <% if l.telephone? %>Tel: <%= l.telephone %><br /><% end -%>
+              <% if l.emergency_telephone? %>Emergency Tel: <%= l.emergency_telephone %><br /><% end -%>
+              <% if l.fax? %>Fax: <%= l.fax %><br /><% end -%>
+              <% if l.email? %>E-mail: <%= mail_to l.email %><br /><% end -%>
+              <% if l.url? %>Website: <%= link_to l.url, l.url, :target => "_blank" %><br /><% end -%>
+              <% if l.notes? %><%= l.notes %><br /><% end -%>
+            </p>
+          <% end -%>
+          <%= link_to "View All", links_path %>
+        </div>
+        <div class="col_4">
+          <h2>Useful Websites</h2>
+          <% websites = Website.display %>
+          <% websites[0..3].each do |w| %>
+            <p>
+              <strong><%= w.name %></strong><br />
+              <% if w.url? %><%= link_to w.url, w.url, :target => "_blank" %><br /><% end -%>
+            </p>
+          <% end -%>
+          <% if websites.length > 4 %>
+            <%= link_to "View All", websites_path %>
+          <% end -%>
+        </div>
+        -->
+      </div>
+    </div>
+    <div class="yellow_wrap">
+      <div class="middle" style="padding-bottom: 20px;">
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
+  </body>
+</html>

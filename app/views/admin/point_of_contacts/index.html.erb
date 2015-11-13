@@ -1,0 +1,10 @@
+<% title PointOfContact.model_name.titleize.pluralize %>
+
+<div class="admin_functions">
+  <%= link_to "New #{PointOfContact.model_name.titleize}", new_admin_point_of_contact_path %>
+</div>
+
+<%= informant_table @point_of_contacts, {
+    :headings => [ '', 'Name', 'Role', 'Telephone', 'Email', 'Display', '', '' ], 
+    :body     => [ it_sort, :name, :role, :telephone, :email, it_ajax_toggle(:display), it_edit, it_destroy ]
+  } %>

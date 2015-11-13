@@ -1,0 +1,19 @@
+<h2>Calendar <%= link_to "View All", calendar_entries_path, :class => "view_all" %></h2>
+<% @entries ||= CalendarEntry.front_end %>
+<% if !@entries.empty? %>
+  <% @entries[0..1].each_with_index do |e, i| %>
+    <div class="home_event_frame">
+      <div class="date">
+        <%= calendar_entry_date(e.date) %>
+      </div>
+      <div class="text">
+        <span class="title">
+          <%= e.name %><br />
+        </span>
+        <span class="content">
+          <%= strip_tags(e.content).length > 137 ? strip_tags(e.content[0..136] + "...") : strip_tags(e.content) %>
+        </span>
+      </div>
+    </div>
+  <% end %>
+<% end %>

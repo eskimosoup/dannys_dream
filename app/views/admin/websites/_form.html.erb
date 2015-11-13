@@ -1,0 +1,27 @@
+<%= form_for([:admin, @website]) do |f| %>
+
+  <%= f.error_messages %>
+
+  <%= field_set_tag("Basic Information") do %>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :url, "URL" %><br />
+      <%= f.text_field :url %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.check_box :display %>
+    <%= f.label :display %>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

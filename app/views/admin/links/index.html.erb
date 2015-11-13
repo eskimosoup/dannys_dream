@@ -1,0 +1,10 @@
+<% title Link.model_name.titleize.pluralize %>
+
+<div class="admin_functions">
+  <%= link_to "New #{Link.model_name.titleize}", new_admin_link_path %>
+</div>
+
+<%= informant_table @links, {
+    :headings => [ '', 'Name', 'Display', '', '', '' ], 
+    :body     => [ it_sort, :name, it_ajax_toggle(:display), it_edit_images, it_edit, it_destroy ]
+  } %>

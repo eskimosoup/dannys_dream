@@ -1,0 +1,12 @@
+<% content_for :head, stylesheet_link_tag("shared") %>
+
+<div class="col_8">
+  <h1><%= title @page.name %></h1>
+  <%= raw @page.content %>
+</div>
+
+<div class="col_4">
+  <%= render("articles/basic_page") %>
+  <div class="clear"></div>
+  <%= render("calendar_entries/basic_page") %>
+</div>

@@ -1,0 +1,95 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag("home") %>
+  <%= stylesheet_link_tag("banners") %>
+  <%= javascript_include_tag("jquery.cycle.all") %>
+<% end %>
+
+<div id="banners" width="924" height="396">
+  <%= link_to(image_tag("banner-1.jpg"), "/pages/join-the-danny-s-dream-club") %>
+  <%= image_tag("banner-2.jpg", :width => "924", :height => "396") %>
+  <%= image_tag("banner-3.jpg", :width => "924", :height => "396") %>
+  <%= image_tag("banner-4.jpg", :width => "924", :height => "396") %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	$('#banners').cycle({
+    timeout: 5000,
+    fx:      'scrollLeft'
+  });
+</script>
+
+<div class="clear"></div>
+
+<div class="col_12"><p>&nbsp;</p></div>
+
+<div class="clear"></div>
+
+<div class="col_4">
+  <%= link_to(image_tag("club_facility.jpg"), "/pages/join-the-danny-s-dream-club") %>
+</div>
+
+<div class="col_4">
+  <%= link_to(image_tag("work_for_us.jpg", :style => "margin-left: 10px;"), "/pages/our-staff") %>
+</div>
+
+<div class="col_4">
+  <%= link_to(image_tag("get_in_touch.jpg", :style => "margin-left: 17px;"), "/contacts/new") %>
+</div>
+
+<div class="col_12">&nbsp;</div>
+
+<div class="clear"></div>
+
+<div class="col_6">
+  <h2 style="width: 390px;"><%= title @page.name %></h2>
+  <%= raw @page.content %>
+</div>
+
+<div class="col_6">
+  <h2>Gallery <%= link_to "View All", gallery_images_path, :class => "view_all" %></h2>
+  <% @image ||= GalleryImage.first %>
+  <% if @image %>
+    <div id="home_gallery_image">
+      <%= link_to image_tag(@image.image.home.url), gallery_images_path %>
+    </div>
+  <% end -%>
+</div>
+
+<div class="clear"></div>
+
+<div class="col_6">
+  <h2 style="width: 390px;">CQC Rating</h2>
+  <script type="text/javascript" src="//www.cqc.org.uk/sites/all/modules/custom/cqc_widget/widget.js?data-id=1-424575055&data-host=www.cqc.org.uk&type=location"></script>
+</div>
+
+<div class="col_6">
+  <%= render("calendar_entries/home_page") %>
+</div>
+
+<div class="clear"></div>
+
+<div class="col_6">
+  <h2 style="width: 390px;">Services</h2>
+  <%  Willow::Branch.find_by_id(7).children.order(:position).each_with_index do |b, i| %>
+    <%= i.zero? ? content_tag(:div, link_to(b.name, b.destination), :class => "home_service_frame", :style => "margin-top: 17px;") : content_tag(:div, link_to(b.name, b.destination), :class => "home_service_frame") %>
+  <% end %>
+</div>
+
+<div class="col_6">
+  <h2>News <%= link_to "View All", articles_path, :class => "view_all" %></h2>
+  <% @articles ||= Article.front_end[0..1] %>
+  <% if !@articles.empty? %>
+    <div id="home_articles">
+      <% @articles.each_with_index do |a, i| %>
+        <div class="home_article col_6">
+          <%= link_to(image_tag(a.image.home, :alt => a.image_alt, :title => a.image_alt, :class => "article_image"), article_path(a)) if a.image? %>
+          <div class="article_details">
+            <span class="article_date"><%= l(a.date, :format => :long) %></span>
+            <p><%= a.summary %></p>
+            <p><%= link_to "Read more", article_path(a) %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,246 @@
+/*---------------------------------
+  IMPORTS
+-----------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Arimo:400,700);
+@import url(http://fonts.googleapis.com/css?family=Walter+Turncoat);
+@import "variables";
+
+/*---------------------------------
+  OVERRIDES
+-----------------------------------*/
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Walter Turncoat', cursive;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 29px;
+  background-image: image-url("hr.png");
+  background-repeat: repeat-x;
+  background-position: 0% 100%;
+  padding-bottom: 10px;
+  a {
+    float: right;
+  }
+}
+
+.brown_wrap h2 {
+  background-image: image-url("hr_3.png");
+}
+
+a.view_all {
+  background-image: image-url("red_button.png");
+  background-repeat: no-repeat;
+  background-position: 0% 3px;
+  width: 80px;
+  height: 40px;
+
+  display: block;
+  font-size: 14px;
+  color: #FFF;
+  text-align: center;
+  font-family: 'Arial', "Trebuchet MS", arial, verdana, sans-serif;
+  &:hover {
+    color: #000;
+  }
+}
+
+a.useful_links {
+  background-image: image-url("red_button_lg.png");
+  background-repeat: no-repeat;
+  background-position: 0% 3px;
+  width: 130px;
+  height: 40px;
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 10px;
+  font-family: 'Arial', "Trebuchet MS", arial, verdana, sans-serif;
+}
+
+img.img_left {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  border: 5px solid white;
+}
+
+img.img_right {
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  border: 5px solid white;
+}
+
+thead th,
+tbody th{
+font-family: "Trebuchet Ms", arial, verdana, sans-serif;
+}
+
+button,
+a.btn,
+input[type="submit"],
+input[type="reset"],
+input[type="button"]{
+font-family: "Trebuchet Ms", arial, verdana, sans-serif;
+}
+
+.menu{
+font-family: "Trebuchet Ms", arial, verdana, sans-serif;
+}
+
+blockquote{
+font-family: "Trebuchet Ms", arial, verdana, sans-serif;
+}
+
+/*---------------------------------
+  LAYOUT
+-----------------------------------*/
+body{
+margin:0;
+padding:0;
+color:#2b2b2b;
+background-color: #FFF;
+font:normal 0.9em/150% 'Arial', "Trebuchet MS", arial, verdana, sans-serif;
+}
+
+.middle {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+}
+
+.sunburst {
+  background-image: image-url("sunburst.png");
+  background-repeat: no-repeat;
+}
+
+.sunburst_2 {
+  background-image: image-url("sunburst_2.png");
+  background-repeat: no-repeat;
+}
+
+#wrap{
+width:960px;
+background:#fff;
+margin:5px auto 30px auto;
+padding:0;
+}
+
+.white_wrap {
+  margin-top: 15px;
+}
+
+.yellow_wrap {
+  background-image: image-url("background.png");
+  padding: 0px 0px;
+}
+
+.brown_wrap {
+  background: image-url("footer.jpg") repeat-x 50%;
+  height: 325px;
+  width: 100%;
+  color: #FFF;
+}
+
+
+#small_navigation {
+  a {
+    color: #FFF;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 0.9em;
+  }
+  a:hover {
+    color: #000;
+  }
+  a.last {
+    margin-right: 0px;
+    padding-right: 0px;
+    border-right: none;
+  }
+}
+
+#header_email a, #header_telephone {
+  color: $dark-grey;
+}
+
+#header_telephone {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+#header_email {
+  margin-bottom: 20px;
+  a {
+    text-decoration: none;
+    font-size: 1.1em;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.menu{
+  margin:-1px -1px 0 -1px;
+}
+
+#header {
+  background-color: #FFF;
+  padding-top: 10px;
+  #logo { height: 144px; }
+  #small_navigation { height: 30px; }
+  #header_contact { height: 60px; padding-top: 30px; }
+  #main_navigation {  }
+}
+
+
+#footer{
+text-align:center;
+padding:20px;
+margin:0;
+background:#efefef;
+border-top:1px solid #ccc;
+color:#999;
+font-size:0.8em;
+text-shadow:0px 1px 1px #fff;
+position: relative;
+top:0;
+left:0;
+}
+
+  #link-top{
+  position: absolute;
+  top:10px;
+  right:10px;
+  *right:25px;/*IE 7 ONLY*/
+  left:auto;
+  color:#666;
+  text-decoration:none;
+  display: inline-block;
+  padding:5px 10px;
+  background:#e5e5e5;
+  line-height:100%;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  }
+
+#sub-footer-links {
+  a {
+    text-decoration: none;
+    color: #2B2B2B;
+  }
+  a:hover {
+    text-decoration:underline
+  }
+  a.social-media {
+    float: right;
+  }
+}
+
+.brown_wrap p span {
+  font-size: 1.2em;
+  font-weight: bold;
+}

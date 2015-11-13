@@ -1,0 +1,29 @@
+<% content_for :head, stylesheet_link_tag("gallery") %>
+
+<div class="col_9">
+  <h1><%= title "Links" %></h1>
+  <% @links.each do |l| %>
+    <p>
+      <strong><%= l.name %></strong><br />
+      <% if l.telephone? %>Tel: <%= l.telephone %><br /><% end -%>
+      <% if l.emergency_telephone? %>Emergency Tel: <%= l.emergency_telephone %><br /><% end -%>
+      <% if l.fax? %>Fax: <%= l.fax %><br /><% end -%>
+      <% if l.email? %>E-mail: <%= mail_to l.email %><br /><% end -%>
+      <% if l.url? %>Website: <%= link_to l.url, l.url, :target => "_blank" %><br /><% end -%>
+      <% if l.notes? %><%= l.notes %><br /><% end -%>
+    </p>
+  <% end -%>
+</div>
+
+<div class="col_3" id="gallery_categories">
+  <ul class="menu vertical right">
+    <%= content_tag :li, :class => ("current" if params[:category].nil?) do %>
+      <%= link_to "All Categories", links_path(:category => nil) %>
+    <% end -%>
+    <% Link.categories.each do |c| %>
+      <%= content_tag :li, :class => ("current" if c == params[:category]) do %>
+        <%= link_to c, links_path(:category => c) %>
+      <% end -%>
+    <% end -%>
+  </ul>
+</div>

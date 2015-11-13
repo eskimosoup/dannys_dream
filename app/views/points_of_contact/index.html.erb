@@ -1,0 +1,13 @@
+<div class="col_12">
+  <h1><%= title "Points Of Contact" %></h1>
+  
+  <% PointOfContact.all.each do |c| %>
+    <p>
+      <% if c.name? %><%= c.name %><br /><% end -%>
+      <% if c.role? %><%= c.role %><br /><% end -%>
+      <% if c.address? %>Address: <%= c.address %><br /><% end -%>
+      <% if c.telephone? %>Office Telephone: <%= c.telephone %><br /><% end -%>
+      <% if c.email? %>E-mail: <%= c.email %><br /><% end -%>
+    </p>
+  <% end -%>
+</div>

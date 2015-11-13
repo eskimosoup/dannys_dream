@@ -1,0 +1,59 @@
+.event_frame {
+  width: 280px;
+  height: 114px;
+  background-image: image-url("home_event_frame.jpg");
+  background-repeat: no-repeat;
+  margin-bottom: 15px;
+  .date {
+    float: left;
+    width: 90px;
+    margin-left: 25px;
+    margin-top: 25px;
+    font-size: 25px;
+    line-height: 30px;
+    .month {
+      font-size: 35px;
+    }
+  }
+  .text {
+    float: left;
+    width: 160px;
+    height: 100px;
+    font-size: 11px;
+    line-height: 110%;
+    margin-top: 10px;
+    .title {
+      font-weight: bold;
+      line-height: 180%;
+    }
+  }
+}
+
+#articles {
+  .article {
+    .article_image {
+      display: block;
+      padding: 10px;
+      background: image-url("thumbborder.png") no-repeat 50%;
+      float: left;
+      margin-top: 10px;
+      margin-right: 15px;
+    }
+    .article_details {
+      float: left;
+      width: 185px;
+      font-size: 11px;
+      line-height: 110%;
+      margin-top: 10px;
+      .article_date {
+        font-weight: bold;
+      }
+      a {
+        font-weight: bold; color: black; text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

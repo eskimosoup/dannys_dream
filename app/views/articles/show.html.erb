@@ -1,0 +1,8 @@
+<% content_for :head, stylesheet_link_tag("articles") %>
+<div class="col_12">
+  <h1><%= title("News - #{@article.name}") %></h1>
+  <div class="article">
+    <%= image_tag(@article.image.show, :class => "article_image") %>
+    <%= raw(@article.content) %>
+  </div>
+</div>
