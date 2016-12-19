@@ -1,9 +1,9 @@
 DannysDream::Application.configure do
-
-  config.action_mailer.default_url_options = { :host => 'dannysdream.co.uk' }
+  config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
+  config.action_mailer.default_url_options = { host: 'dannysdream.co.uk' }
 
   ActionMailer::Base.delivery_method = :sendmail
-  ActionMailer::Base.sendmail_settings = { :location => '/usr/lib/sendmail', :arguments => '-i -v' }
+  ActionMailer::Base.sendmail_settings = { location: '/usr/lib/sendmail', arguments: '-i -v' }
 
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -66,8 +66,7 @@ DannysDream::Application.configure do
                                'prettify.css',
                                'tiptip.css',
                                'gallery.css',
-                                'banners.css'
-                              ]
+                               'banners.css']
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
